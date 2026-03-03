@@ -3,7 +3,7 @@
 <head>
   <meta charset="UTF-8" />
   <meta name="viewport" content="width=device-width, initial-scale=1.0" />
-  <title>Wealthsimple Application</title>
+  <title>Wealthsimple AI Builders</title>
   <style>
     :root {
       --bg-light: #fcfcfc;
@@ -78,18 +78,63 @@
       border: 0;
     }
 
-    .project-link {
-      display: inline-block;
-      font-size: 1rem;
-      color: var(--text-dark);
-      text-decoration: none;
-      border-bottom: 1px solid currentColor;
-      padding-bottom: 4px;
-      transition: opacity 160ms ease;
+    .repo-row {
+      width: min(100%, 840px);
+      margin: 0 auto;
+      display: flex;
+      align-items: center;
+      justify-content: center;
+      gap: 10px;
+      flex-wrap: wrap;
     }
 
-    .project-link:hover {
-      opacity: 0.65;
+    .repo-title {
+      margin: 6px 0 10px;
+      font-size: 0.95rem;
+      font-weight: 600;
+      letter-spacing: 0.01em;
+      color: #3c3c3c;
+    }
+
+    .repo-code {
+      margin: 0;
+      padding: 10px 14px;
+      background: #f2f2f2;
+      border: 1px solid #e3e3e3;
+      border-radius: 10px;
+      font-family: "SFMono-Regular", Menlo, Consolas, monospace;
+      font-size: 0.9rem;
+      color: #333333;
+      word-break: break-all;
+    }
+
+    .repo-go {
+      width: 40px;
+      height: 40px;
+      display: inline-flex;
+      align-items: center;
+      justify-content: center;
+      border-radius: 10px;
+      border: 1px solid #d7d7d7;
+      background: #ffffff;
+      color: #1d1d1d;
+      text-decoration: none;
+      transition: transform 140ms ease, box-shadow 140ms ease;
+    }
+
+    .repo-go:hover {
+      transform: translateY(-1px);
+      box-shadow: 0 6px 16px rgba(0, 0, 0, 0.12);
+    }
+
+    .repo-go:focus-visible {
+      outline: 2px solid #1d1d1d;
+      outline-offset: 2px;
+    }
+
+    .repo-go svg {
+      width: 18px;
+      height: 18px;
     }
 
     .faq-section {
@@ -116,7 +161,7 @@
       cursor: pointer;
       list-style: none;
       padding: 20px 22px;
-      font-size: 1.06rem;
+      font-size: 1.2rem;
       font-weight: 600;
       display: flex;
       align-items: center;
@@ -140,10 +185,27 @@
     }
 
     .answer {
-      padding: 0 22px 22px;
+      padding: 16px 22px 22px;
       color: #dddddd;
-      font-size: 0.98rem;
+      font-size: 1.02rem;
       border-top: 1px solid var(--line);
+    }
+
+    .answer p {
+      margin: 0 0 12px;
+    }
+
+    .answer p:last-child {
+      margin-bottom: 0;
+    }
+
+    .answer ul {
+      margin: 0 0 14px;
+      padding-left: 22px;
+    }
+
+    .answer li {
+      margin-bottom: 8px;
     }
 
     @media (max-width: 640px) {
@@ -152,7 +214,11 @@
       }
 
       summary {
-        font-size: 1rem;
+        font-size: 1.08rem;
+      }
+
+      .answer {
+        font-size: 0.97rem;
       }
     }
   </style>
@@ -161,7 +227,7 @@
   <main class="top">
     <h1>
       <span class="word hi">Hi,</span>
-      <span class="word wealthsimple">Wealthsimple!</span>
+      <span class="word wealthsimple">Wealthsimple! 👋</span>
     </h1>
 
     <div class="video-wrap">
@@ -174,34 +240,163 @@
       ></iframe>
     </div>
 
-    <a class="project-link" href="https://github.com/kgolezardi/fb-healthcheck" target="_blank" rel="noopener noreferrer">
-      GitHub Repository: kgolezardi/fb-healthcheck
-    </a>
+    <p class="repo-title">For Nerds Only: Here's the Repo ↓</p>
+    <div class="repo-row">
+      <p class="repo-code"><code>https://github.com/kgolezardi/fb-healthcheck</code></p>
+      <a
+        class="repo-go"
+        href="https://github.com/kgolezardi/fb-healthcheck"
+        target="_blank"
+        rel="noopener noreferrer"
+        aria-label="Open GitHub repository"
+        title="Open repository"
+      >
+        <svg viewBox="0 0 24 24" fill="none" aria-hidden="true">
+          <path d="M8 6H18V16" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"></path>
+          <path d="M18 6L6 18" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"></path>
+        </svg>
+      </a>
+    </div>
   </main>
 
   <section class="faq-section">
     <div class="faq-container">
       <details>
-        <summary>What is the one critical decision in your system that must remain human?</summary>
+        <summary>What problem is this system solving?</summary>
         <div class="answer">
-          Since Fast Bundle is a non-consumer-facing productivity product, I don't think there is any inherent need to maintain a human connection with customers. So, the long-term vision is for this system to accurately determine issues and even perform troubleshooting without any human involvement. However, the limitations of the current LLM models make it crucial to keep a human in the loop. More specifically, at this stage of development, members of Fast Bundle's support or key account management team must manually review all detected failures and try to resolve the issues. More importantly, this step is necessary to provide feedback, as there may be many false positives. Their feedback will lead to adding more deterministic checks and more nuanced prompts for the LLM.
+          <p>This platform automates <strong>health checks for Fast Bundle across Shopify stores</strong>.</p>
+          <p>Fast Bundle adds merchandising and discount functionality to storefronts, but every Shopify store is customized differently. Because of theme changes, app conflicts, discount logic changes, or store-specific implementations, Fast Bundle’s functionality in a store can break.</p>
+          <p>Previously, this was handled through manual health checks for <strong>enterprise users (the highest-tier plan)</strong>—and that initiative <strong>dramatically improved net revenue retention</strong> for that segment. But the approach still had three limitations:</p>
+          <ul>
+            <li><strong>It was becoming harder to scale</strong> as the number of enterprise merchants grew.</li>
+            <li><strong>It could only be offered to a limited segment of customers</strong>, mainly higher-tier plans, rather than across the broader customer base.</li>
+            <li><strong>It was periodic rather than immediate</strong>, so issues could remain undetected between checks.</li>
+          </ul>
+          <p>The platform solves this by automatically testing whether Fast Bundle is installed, visible, usable, and applying discounts correctly, then logging the results for follow-up.</p>
+        </div>
+      </details>
+
+      <details>
+        <summary>So, in short, what’s the benefit of this system?</summary>
+        <div class="answer">
+          <p>The main benefit is that <strong>bundle health checks can now be automated across the entire customer base</strong>, not just for enterprise merchants, and can be performed both <strong>when a bundle is created</strong> and <strong>on an ongoing periodic basis</strong>.</p>
+          <p>That creates value in three ways:</p>
+          <ul>
+            <li><strong>It expands coverage</strong>, making proactive monitoring possible for all customers.</li>
+            <li><strong>It can further improve net revenue retention</strong>, by catching issues earlier and maintaining a more reliable merchant experience.</li>
+            <li><strong>It frees up Fast Bundle’s support and key account management teams</strong> to spend less time on repetitive functionality checks and more time helping merchants with higher-value problems, especially optimizing bundling strategy and driving better results from the app.</li>
+          </ul>
         </div>
       </details>
 
       <details>
         <summary>What is the one critical decision in your system that must remain human?</summary>
         <div class="answer">
-          Since Fast Bundle is a non-consumer-facing productivity product, I don't think there is any inherent need to maintain a human connection with customers. So, the long-term vision is for this system to accurately determine issues and even perform troubleshooting without any human involvement. However, the limitations of the current LLM models make it crucial to keep a human in the loop. More specifically, at this stage of development, members of Fast Bundle's support or key account management team must manually review all detected failures and try to resolve the issues. More importantly, this step is necessary to provide feedback, as there may be many false positives. Their feedback will lead to adding more deterministic checks and more nuanced prompts for the LLM.
+          <p>The critical decision that must remain human is <strong>the final judgment on whether a detected failure is truly a customer-impacting issue and what action should be taken next</strong>.</p>
+          <p>My long-term vision is for the system to diagnose issues very accurately and eventually handle a large portion of troubleshooting automatically. But today, LLMs are still imperfect, especially in messy real-world storefront environments with pop-ups, custom themes, and ambiguous UI states.</p>
+          <p>Because of that, a human from support or key account management still needs to:</p>
+          <ul>
+            <li>review failures flagged by the system,</li>
+            <li>identify false positives,</li>
+            <li>decide whether intervention is necessary,</li>
+            <li>and provide feedback that improves the system over time.</li>
+          </ul>
+          <p>That human review step is not just a safeguard; it is also what creates the feedback loop needed to make the platform more reliable through better prompts, more deterministic checks, and better categorization logic.</p>
         </div>
       </details>
 
       <details>
-        <summary>What is the one critical decision in your system that must remain human?</summary>
+        <summary>What would break first at scale?</summary>
         <div class="answer">
-          Since Fast Bundle is a non-consumer-facing productivity product, I don't think there is any inherent need to maintain a human connection with customers. So, the long-term vision is for this system to accurately determine issues and even perform troubleshooting without any human involvement. However, the limitations of the current LLM models make it crucial to keep a human in the loop. More specifically, at this stage of development, members of Fast Bundle's support or key account management team must manually review all detected failures and try to resolve the issues. More importantly, this step is necessary to provide feedback, as there may be many false positives. Their feedback will lead to adding more deterministic checks and more nuanced prompts for the LLM.
+          <p>The first thing that would break at scale is <strong>accuracy across edge cases</strong>.</p>
+          <p>Shopify stores vary widely in theme structure, UI behavior, and discount logic, so as volume grows, the system would likely face more <strong>false positives and false negatives</strong>. If that happens, the human review layer could become the new bottleneck.</p>
+          <p>So the main scaling challenge is not whether the system can run more checks, but whether it can stay <strong>reliable enough</strong> that the output remains useful. Over time, the solution would be to turn repeated patterns into deterministic checks and reserve LLM reasoning for the more ambiguous cases.</p>
         </div>
       </details>
     </div>
   </section>
+
+  <script>
+    (function () {
+      if (window.matchMedia("(prefers-reduced-motion: reduce)").matches) return;
+
+      const items = document.querySelectorAll(".faq-container details");
+      const duration = 260;
+      const easing = "cubic-bezier(0.2, 0.7, 0.2, 1)";
+
+      items.forEach((item) => {
+        const summary = item.querySelector("summary");
+        if (!summary) return;
+
+        let animation = null;
+        let isClosing = false;
+        let isExpanding = false;
+
+        summary.addEventListener("click", (event) => {
+          event.preventDefault();
+          item.style.overflow = "hidden";
+
+          if (isClosing || !item.open) {
+            openItem();
+          } else if (isExpanding || item.open) {
+            closeItem();
+          }
+        });
+
+        function closeItem() {
+          isClosing = true;
+          const startHeight = item.offsetHeight;
+          const endHeight = summary.offsetHeight;
+
+          if (animation) animation.cancel();
+
+          animation = item.animate(
+            { height: [startHeight + "px", endHeight + "px"] },
+            { duration, easing }
+          );
+
+          animation.onfinish = () => {
+            item.open = false;
+            cleanup();
+            isClosing = false;
+          };
+
+          animation.oncancel = () => {
+            isClosing = false;
+          };
+        }
+
+        function openItem() {
+          isExpanding = true;
+          const startHeight = item.offsetHeight;
+          item.open = true;
+          const endHeight = item.offsetHeight;
+          item.style.height = startHeight + "px";
+
+          if (animation) animation.cancel();
+
+          animation = item.animate(
+            { height: [startHeight + "px", endHeight + "px"] },
+            { duration, easing }
+          );
+
+          animation.onfinish = () => {
+            cleanup();
+            isExpanding = false;
+          };
+
+          animation.oncancel = () => {
+            isExpanding = false;
+          };
+        }
+
+        function cleanup() {
+          item.style.height = "";
+          item.style.overflow = "";
+          animation = null;
+        }
+      });
+    })();
+  </script>
 </body>
 </html>
